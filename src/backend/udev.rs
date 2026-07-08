@@ -1451,7 +1451,7 @@ fn render_frame(
     // the background appears "frozen" inside those windows.
     // Fix: reset buffer ages so every pixel is redrawn from scratch this frame.
     if data.render.background_is_animated {
-        let has_transparent = data.space.elements().any(|w| {
+        let has_transparent = data.stage.windows().any(|w| {
             w.wl_surface()
                 .as_deref()
                 .and_then(driftwm::config::applied_rule)
