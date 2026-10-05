@@ -20,6 +20,8 @@ impl DriftWm {
     /// session pause. `held_action` above all — its repeat would go on firing,
     /// and forcing a redraw per frame, on the VT we just left.
     pub(crate) fn reset_held_input_state(&mut self) {
+        self.cancel_held_overview_return();
+        self.held_overview = false;
         self.clear_held_bindings();
         self.suppressed_keys.clear();
         self.held_buttons.clear();

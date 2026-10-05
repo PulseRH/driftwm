@@ -86,6 +86,8 @@ pub enum Action {
     ZoomOut,
     ZoomReset,
     ZoomToFit,
+    ZoomToFitHeld,
+    RestoreOverview,
     ZoomToFitSnapped,
     ToggleFullscreen,
     FitWindow,

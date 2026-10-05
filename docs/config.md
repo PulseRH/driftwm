@@ -755,6 +755,12 @@ Optional press/release bindings; all keyboard actions are supported. A held bind
 "alt+F8" = { press = "toggle-cursor-pan", release = "toggle-cursor-pan", cancel = "toggle-cursor-pan", hold = "modifiers" }
 ```
 
+**Example: overview while the configured modifier remains held**
+
+```toml
+"mod+w" = { press = "zoom-to-fit-held", release = "restore-overview", cancel = "restore-overview", hold = "modifiers" }
+```
+
 ## `[keybindings]`
 
 Keyboard bindings: "Modifier+...+Keysym" = "action [arg]" Merges with defaults. Use "none" to unbind a default binding. "mod" expands to mod_key. Literal modifiers: alt, super (alias logo), ctrl (alias control), shift, mod3. Keysyms are XKB names (case-insensitive): return, tab, up, a, equal, etc. A bare modifier combo (e.g. "alt+shift") is a tap binding (fires on chord release; see [input.keyboard] options).
@@ -783,6 +789,8 @@ Actions:
 - `go-to-bookmark <name>` — jump the camera to a saved bookmark
 - `set-bookmark <name>` — save the current camera center as a bookmark (create or overwrite)
 - `move-to-bookmark <name>` — move the focused window's center to a bookmark point
+- `zoom-to-fit-held` — begin a binding-held overview (use with held-keybindings)
+- `restore-overview` — restore its saved view, unless camera panning/navigation committed the new view
 - `zoom-to-fit` — fit all windows in viewport
 - `zoom-to-fit-snapped` — fit only the focused window's snap cluster
 - `toggle-fullscreen` — toggle focused window fullscreen

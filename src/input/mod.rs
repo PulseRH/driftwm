@@ -2,6 +2,7 @@ mod actions;
 pub(crate) mod constraint;
 pub(crate) mod gestures;
 pub(crate) mod held_bindings;
+mod held_overview;
 pub(crate) mod keyboard;
 mod pointer;
 pub(crate) mod tablet;
@@ -1430,6 +1431,10 @@ impl DriftWm {
         let Some(output) = active else {
             return;
         };
+        if self.held_overview_output.as_ref() == Some(&output) {
+            self.clear_edge_pan(&output);
+            return;
+        }
         // A fullscreen window owns the whole viewport — edge-panning the camera
         // out from under it just breaks the fullscreen surface.
         if self.is_output_fullscreen(&output) {
